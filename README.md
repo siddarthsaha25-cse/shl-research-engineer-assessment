@@ -3,11 +3,12 @@
 ## Overview
 This repository contains the machine learning pipeline developed for the SHL Research Engineer assessment. The objective is to predict evaluation ratings from speech audio recordings.
 
-## Methodology
-- **Acoustic Features:** Extracted temporal dynamics (speech activity ratio, duration, RMS, zero-crossing rate), spectral descriptors (centroid, bandwidth, rolloff, flatness, contrast across 7 bands), and phonetic representations (MFCCs with delta and delta-delta, Chroma, Tonnetz).
-- **Cross-Validation:** Leakage-free 5-Fold Cross Validation.
-- **Ensemble Model:** Weighted ensemble combining LightGBM, CatBoost, and Ridge Regression.
+## Experiments & Scripts
+- `baseline.py`: Baseline LightGBM model utilizing primary acoustic descriptors (Public Score: 0.7674).
+- `advanced_model.py`: **Final winning solution** (Public Score: 0.6944). Comprehensive acoustic extraction (prosodic dynamics, spectral contrast, MFCC deltas, Tonnetz) with a 5-Fold cross-validated ensemble of LightGBM, CatBoost, and Ridge.
+- `advanced_tuned.py`: Experimentation with higher-order statistical moments (skew/kurtosis) and ExtraTrees.
+- `wav2vec_model.py`: Self-supervised speech representation experiment utilizing pre-trained `facebook/wav2vec2-base` embeddings.
 
-## Results
+## Results Summary
 - Baseline LightGBM: 0.7674
-- Advanced Acoustic Ensemble: **0.6944** (Best Score)
+- **Advanced Acoustic Ensemble: 0.6944 (Selected Best)**
